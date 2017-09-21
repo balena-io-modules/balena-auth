@@ -1,0 +1,64 @@
+{
+  "name": "resin-auth",
+  "version": "0.9.0",
+  "description": "Resin.io session authentication utilities",
+  "main": "build/auth.js",
+  "types": "lib/*.ts",
+  "homepage": "https://github.com/resin-io/resin-auth",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/resin-io/resin-auth.git"
+  },
+  "keywords": [
+    "resin",
+    "auth",
+    "jwt",
+    "api-key",
+    "session"
+  ],
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test:node": "mocha -r ts-node/register --reporter spec tests/**/*.spec.ts",
+    "test:browser": "karma start",
+    "lint": "tslint \"lib/**/*.ts\" \"tests/**/*.ts\"",
+    "test": "npm run build && npm run lint && npm run test:node && npm run test:browser",
+    "build": "rimraf ./build && npm run prettify && tsc && npm run readme",
+    "prepublish": "require-npm4-to-publish",
+    "prepublishOnly": "npm test",
+    "prettify": "prettier --use-tabs --single-quote --write \"lib/*.ts\" \"tests/**/*.ts\"",
+    "readme": "jsdoc2md --template doc/README.hbs build/*.js > README.md",
+    "precommit": "npm run lint && npm run test:node"
+  },
+  "author": "Resin.io Team <hello@resin.io>",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@resin.io/types-mochainon": "^2.0.1",
+    "@types/jsonwebtoken": "^7.2.3",
+    "@types/mocha": "^2.2.42",
+    "@types/node": "^8.0.26",
+    "husky": "^0.14.3",
+    "jsdoc-to-markdown": "^3.0.0",
+    "jsonwebtoken": "^7.3.0",
+    "karma": "^1.7.0",
+    "mocha": "^3.5.0",
+    "mochainon": "^2.0.0",
+    "prettier": "^1.5.3",
+    "require-npm4-to-publish": "^1.0.0",
+    "resin-config-karma": "^2.0.0",
+    "resin-settings-client": "^3.7.0",
+    "rimraf": "^2.6.1",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.5.0",
+    "typescript": "2.4.2"
+  },
+  "dependencies": {
+    "@types/bluebird": "^3.5.8",
+    "@types/jwt-decode": "^2.2.1",
+    "bluebird": "^3.0.0",
+    "jwt-decode": "^2.1.0",
+    "resin-errors": "^2.8.0",
+    "resin-settings-storage": "^4.0.0"
+  }
+}
