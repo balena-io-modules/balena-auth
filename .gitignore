@@ -1,0 +1,13 @@
+# Numerous always-ignore extensions
+*.diff
+*.err
+*.orig
+*.log
+
+# Folders to ignore
+.idea
+.vscode
+node_modules
+build/
+.tmp
+.cache-loader

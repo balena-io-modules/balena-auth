@@ -38,14 +38,14 @@ It accepts the following params:
 | --- | --- | --- |
 | options | <code>Object</code> | options |
 | options.dataDirectory | <code>string</code> | the directory to use for storage in Node.js. Ignored in the browser. |
-| options.tokenKey | <code>string</code> | the key used to store the last token in the storage. |
+| options.tokenKey | <code>string</code> | the key used to store the last token in the storage. `token` by default. |
 
 **Example**
 ```js
 const auth = require('resin-auth')({
 	dataDirectory: '/opt/cache/resin',
 	tokenKey: 'token'
-})
+});
 ```
 
 {{#module name="auth"}}
@@ -54,6 +54,7 @@ const auth = require('resin-auth')({
 {{>separator~}}
 {{>members~}}
 {{/module}}
+
 
 Support
 -------
