@@ -38,7 +38,7 @@ var ResinAuth = (function () {
          * @returns {Promise<void>}
          *
          * @example
-         * token.setKey('...').then(() => { ... });
+         * auth.setKey('...').then(() => { ... });
          */
         this.setKey = function (key) {
             try {
@@ -59,11 +59,11 @@ var ResinAuth = (function () {
          * @returns {Promise<Boolean>} has token
          *
          * @example
-         * token.hasKey().then((hasToken) => {
+         * auth.hasKey().then((hasToken) => {
          * 	if (hasToken) {
-         * 		console.log('There is a token!');
+         * 		console.log('There is a key!');
          * 	} else {
-         * 		console.log('There is not a token!');
+         * 		console.log('There is not a key!');
          * 	}
          * });
          */
@@ -80,7 +80,7 @@ var ResinAuth = (function () {
          * @returns {Promise}
          *
          * @example
-         * token.removeKey();
+         * auth.removeKey();
          */
         this.removeKey = function () {
             _this.token = undefined;
@@ -96,7 +96,7 @@ var ResinAuth = (function () {
          * @returns {Promise<TokenType>}
          *
          * @example
-         * token.getType().then((type) => { ... });
+         * auth.getType().then((type) => { ... });
          */
         this.getType = function () {
             return _this.getToken().then(function (token) { return token.type; });
@@ -110,7 +110,7 @@ var ResinAuth = (function () {
          * @returns {Promise<string>}
          *
          * @example
-         * token.getKey().then((key) => { ... });
+         * auth.getKey().then((key) => { ... });
          */
         this.getKey = function () {
             return _this.getToken().then(function (token) { return token.key; });
@@ -124,7 +124,7 @@ var ResinAuth = (function () {
          * @returns {Promise<number | undefined>}
          *
          * @example
-         * token.getAge().then((age) => { ... });
+         * auth.getAge().then((age) => { ... });
          */
         this.getAge = function () {
             return _this.getToken().then(function (token) { return token.getAge(); });
@@ -138,7 +138,7 @@ var ResinAuth = (function () {
          * @returns {Promise<boolean>}
          *
          * @example
-         * token.isExpired().then((expired) => { ... });
+         * auth.isExpired().then((expired) => { ... });
          */
         this.isExpired = function () {
             return _this.getToken().then(function (token) { return token.isExpired(); });
@@ -152,7 +152,7 @@ var ResinAuth = (function () {
          * @returns {Promise<boolean>}
          *
          * @example
-         * token.isValid().then((valid) => { ... });
+         * auth.isValid().then((valid) => { ... });
          */
         this.isValid = function () {
             return _this.getToken().then(function (token) { return token.isValid(); });
@@ -166,7 +166,7 @@ var ResinAuth = (function () {
          * @returns {Promise<boolean>}
          *
          * @example
-         * token.needs2FA().then((needs2FA) => { ... });
+         * auth.needs2FA().then((needs2FA) => { ... });
          */
         this.needs2FA = function () {
             return _this.getToken().then(function (token) { return token.needs2FA(); });

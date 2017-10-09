@@ -2,8 +2,8 @@ resin-auth
 -----------
 
 [![npm version](https://badge.fury.io/js/resin-auth.svg)](http://badge.fury.io/js/resin-auth)
-[![dependencies](https://david-dm.org/resin-io/resin-auth.png)](https://david-dm.org/resin-io/resin-auth.png)
-[![Build Status](https://travis-ci.org/resin-io/resin-auth.svg?branch=master)](https://travis-ci.org/resin-io/resin-auth)
+[![dependencies](https://david-dm.org/resin-io-modules/resin-auth.png)](https://david-dm.org/resin-io-modules/resin-auth.png)
+[![Build Status](https://travis-ci.org/resin-io-modules/resin-auth.svg?branch=master)](https://travis-ci.org/resin-io-modules/resin-auth)
 
 Join our online chat at [![Gitter chat](https://badges.gitter.im/resin-io/chat.png)](https://gitter.im/resin-io/chat)
 
@@ -42,7 +42,8 @@ It accepts the following params:
 
 **Example**
 ```js
-const auth = require('resin-auth')({
+const ResinAuth = require('resin-auth');
+const auth = new ResinAuth({
 	dataDirectory: '/opt/cache/resin',
 	tokenKey: 'token'
 });
@@ -73,7 +74,7 @@ const auth = require('resin-auth')({
 
 **Example**  
 ```js
-token.setKey('...').then(() => { ... });
+auth.setKey('...').then(() => { ... });
 ```
 <a name="module_auth..hasKey"></a>
 
@@ -84,7 +85,13 @@ token.setKey('...').then(() => { ... });
 **Access**: public  
 **Example**  
 ```js
-token.hasKey().then((hasToken) => {	if (hasToken) {		console.log('There is a token!');	} else {		console.log('There is not a token!');	}});
+auth.hasKey().then((hasToken) => {
+	if (hasToken) {
+		console.log('There is a key!');
+	} else {
+		console.log('There is not a key!');
+	}
+});
 ```
 <a name="module_auth..removeKey"></a>
 
@@ -96,7 +103,7 @@ This promise is not rejected if there was no token at the time of removal.
 **Access**: public  
 **Example**  
 ```js
-token.removeKey();
+auth.removeKey();
 ```
 <a name="module_auth..getType"></a>
 
@@ -106,7 +113,7 @@ token.removeKey();
 **Access**: public  
 **Example**  
 ```js
-token.getType().then((type) => { ... });
+auth.getType().then((type) => { ... });
 ```
 <a name="module_auth..getKey"></a>
 
@@ -116,7 +123,7 @@ token.getType().then((type) => { ... });
 **Access**: public  
 **Example**  
 ```js
-token.getKey().then((key) => { ... });
+auth.getKey().then((key) => { ... });
 ```
 <a name="module_auth..getAge"></a>
 
@@ -126,7 +133,7 @@ token.getKey().then((key) => { ... });
 **Access**: public  
 **Example**  
 ```js
-token.getAge().then((age) => { ... });
+auth.getAge().then((age) => { ... });
 ```
 <a name="module_auth..isExpired"></a>
 
@@ -136,7 +143,7 @@ token.getAge().then((age) => { ... });
 **Access**: public  
 **Example**  
 ```js
-token.isExpired().then((expired) => { ... });
+auth.isExpired().then((expired) => { ... });
 ```
 <a name="module_auth..isValid"></a>
 
@@ -146,7 +153,7 @@ token.isExpired().then((expired) => { ... });
 **Access**: public  
 **Example**  
 ```js
-token.isValid().then((valid) => { ... });
+auth.isValid().then((valid) => { ... });
 ```
 <a name="module_auth..needs2FA"></a>
 
@@ -156,14 +163,14 @@ token.isValid().then((valid) => { ... });
 **Access**: public  
 **Example**  
 ```js
-token.needs2FA().then((needs2FA) => { ... });
+auth.needs2FA().then((needs2FA) => { ... });
 ```
 
 
 Support
 -------
 
-If you're having any problem, please [raise an issue](https://github.com/resin-io/resin-auth/issues/new) on GitHub and the Resin.io team will be happy to help.
+If you're having any problem, please [raise an issue](https://github.com/resin-io-modules/resin-auth/issues/new) on GitHub and the Resin.io team will be happy to help.
 
 Tests
 -----
@@ -177,10 +184,10 @@ $ npm test
 Contribute
 ----------
 
-- Issue Tracker: [github.com/resin-io/resin-auth/issues](https://github.com/resin-io/resin-auth/issues)
-- Source Code: [github.com/resin-io/resin-auth](https://github.com/resin-io/resin-auth)
+- Issue Tracker: [github.com/resin-io-modules/resin-auth/issues](https://github.com/resin-io-modules/resin-auth/issues)
+- Source Code: [github.com/resin-io-modules/resin-auth](https://github.com/resin-io-modules/resin-auth)
 
-Before submitting a PR, please make sure that you include tests, and that [coffeelint](http://www.coffeelint.org/) runs without any warning:
+Before submitting a PR, please make sure that you include tests, and that [tslint](https://palantir.github.io/tslint/) runs without any warning:
 
 ```sh
 $ npm run lint

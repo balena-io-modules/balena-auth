@@ -1,13 +1,13 @@
 {
   "name": "resin-auth",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Resin.io session authentication utilities",
   "main": "build/auth.js",
   "types": "lib/*.ts",
-  "homepage": "https://github.com/resin-io/resin-auth",
+  "homepage": "https://github.com/resin-io-modules/resin-auth",
   "repository": {
     "type": "git",
-    "url": "git://github.com/resin-io/resin-auth.git"
+    "url": "git://github.com/resin-io-modules/resin-auth.git"
   },
   "keywords": [
     "resin",
