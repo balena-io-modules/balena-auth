@@ -53,7 +53,7 @@ export class ResinAuth {
 	 * @returns {Promise<void>}
 	 *
 	 * @example
-	 * token.setKey('...').then(() => { ... });
+	 * auth.setKey('...').then(() => { ... });
 	 */
 	public setKey = (key: string): Promise<void> => {
 		try {
@@ -74,11 +74,11 @@ export class ResinAuth {
 	 * @returns {Promise<Boolean>} has token
 	 *
 	 * @example
-	 * token.hasKey().then((hasToken) => {
-	 * 	if (hasToken) {
-	 * 		console.log('There is a token!');
+	 * auth.hasKey().then((hasKey) => {
+	 * 	if (hasKey) {
+	 * 		console.log('There is a key!');
 	 * 	} else {
-	 * 		console.log('There is not a token!');
+	 * 		console.log('There is not a key!');
 	 * 	}
 	 * });
 	 */
@@ -96,7 +96,7 @@ export class ResinAuth {
 	 * @returns {Promise}
 	 *
 	 * @example
-	 * token.removeKey();
+	 * auth.removeKey();
 	 */
 	public removeKey = () => {
 		this.token = undefined;
@@ -114,7 +114,7 @@ export class ResinAuth {
 	 * @returns {Promise<TokenType>}
 	 *
 	 * @example
-	 * token.getType().then((type) => { ... });
+	 * auth.getType().then((type) => { ... });
 	 */
 	public getType = (): Promise<TokenType> =>
 		this.getToken().then(token => token.type);
@@ -128,7 +128,7 @@ export class ResinAuth {
 	 * @returns {Promise<string>}
 	 *
 	 * @example
-	 * token.getKey().then((key) => { ... });
+	 * auth.getKey().then((key) => { ... });
 	 */
 	public getKey = (): Promise<string> =>
 		this.getToken().then(token => token.key);
@@ -142,7 +142,7 @@ export class ResinAuth {
 	 * @returns {Promise<number | undefined>}
 	 *
 	 * @example
-	 * token.getAge().then((age) => { ... });
+	 * auth.getAge().then((age) => { ... });
 	 */
 	public getAge = (): Promise<number | undefined> =>
 		this.getToken().then(token => token.getAge());
@@ -156,7 +156,7 @@ export class ResinAuth {
 	 * @returns {Promise<boolean>}
 	 *
 	 * @example
-	 * token.isExpired().then((expired) => { ... });
+	 * auth.isExpired().then((expired) => { ... });
 	 */
 	public isExpired = (): Promise<boolean> =>
 		this.getToken().then(token => token.isExpired());
@@ -170,7 +170,7 @@ export class ResinAuth {
 	 * @returns {Promise<boolean>}
 	 *
 	 * @example
-	 * token.isValid().then((valid) => { ... });
+	 * auth.isValid().then((valid) => { ... });
 	 */
 	public isValid = (): Promise<boolean> =>
 		this.getToken().then(token => token.isValid());
@@ -184,7 +184,7 @@ export class ResinAuth {
 	 * @returns {Promise<boolean>}
 	 *
 	 * @example
-	 * token.needs2FA().then((needs2FA) => { ... });
+	 * auth.needs2FA().then((needs2FA) => { ... });
 	 */
 	public needs2FA = (): Promise<boolean> =>
 		this.getToken().then(token => token.needs2FA());
