@@ -1,6 +1,6 @@
 {
   "name": "resin-auth",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Resin.io session authentication utilities",
   "main": "build/auth.js",
   "types": "lib/*.ts",
@@ -9,6 +9,10 @@
     "type": "git",
     "url": "git://github.com/resin-io-modules/resin-auth.git"
   },
+  "files": [
+    "build/",
+    "lib/"
+  ],
   "keywords": [
     "resin",
     "auth",
@@ -20,16 +24,20 @@
     "test": "tests"
   },
   "scripts": {
+    "ci": "npm test && catch-uncommitted",
+    "lint": "tslint \"lib/**/*.ts\" \"tests/**/*.ts\"",
     "test:node": "mocha -r ts-node/register --reporter spec tests/**/*.spec.ts",
     "test:browser": "karma start",
-    "lint": "tslint \"lib/**/*.ts\" \"tests/**/*.ts\"",
-    "test": "npm run build && npm run lint && npm run test:node && npm run test:browser",
-    "build": "rimraf ./build && npm run prettify && tsc && npm run readme",
-    "prepublish": "require-npm4-to-publish",
-    "prepublishOnly": "npm test",
+    "prebuild": "rimraf ./build && npm run prettify",
+    "build": "tsc",
+    "pretest": "npm run build && npm run lint",
+    "test": "npm run test:node && npm run test:browser",
     "prettify": "prettier --use-tabs --single-quote --write \"lib/*.ts\" \"tests/**/*.ts\"",
+    "prepublish": "require-npm4-to-publish",
+    "prepack": "npm test",
+    "prereadme": "npm run build",
     "readme": "jsdoc2md --template doc/README.hbs build/*.js > README.md",
-    "precommit": "npm run lint && npm run test:node"
+    "precommit": "npm run lint && npm run test:node -- --reporter dot"
   },
   "author": "Resin.io Team <hello@resin.io>",
   "license": "Apache-2.0",
@@ -38,6 +46,7 @@
     "@types/jsonwebtoken": "^7.2.3",
     "@types/mocha": "^2.2.42",
     "@types/node": "^8.0.26",
+    "catch-uncommitted": "^1.0.0",
     "husky": "^0.14.3",
     "jsdoc-to-markdown": "^3.0.0",
     "jsonwebtoken": "^7.3.0",

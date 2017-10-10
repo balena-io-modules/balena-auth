@@ -65,7 +65,7 @@ const auth = new ResinAuth({
 
 ### auth~setKey(key) ⇒ <code>Promise.&lt;void&gt;</code>
 **Kind**: inner method of [<code>auth</code>](#module_auth)  
-**Summary**: Set the token key  
+**Summary**: Set the key  
 **Access**: public  
 
 | Param | Type |
@@ -80,26 +80,20 @@ auth.setKey('...').then(() => { ... });
 
 ### auth~hasKey() ⇒ <code>Promise.&lt;Boolean&gt;</code>
 **Kind**: inner method of [<code>auth</code>](#module_auth)  
-**Summary**: Has a token  
-**Returns**: <code>Promise.&lt;Boolean&gt;</code> - has token  
+**Summary**: Has a key  
+**Returns**: <code>Promise.&lt;Boolean&gt;</code> - has key  
 **Access**: public  
 **Example**  
 ```js
-auth.hasKey().then((hasToken) => {
-	if (hasToken) {
-		console.log('There is a key!');
-	} else {
-		console.log('There is not a key!');
-	}
-});
+auth.hasKey().then((hasKey) => { ... });
 ```
 <a name="module_auth..removeKey"></a>
 
 ### auth~removeKey() ⇒ <code>Promise</code>
-This promise is not rejected if there was no token at the time of removal.
+This promise is not rejected if there was no key at the time of removal.
 
 **Kind**: inner method of [<code>auth</code>](#module_auth)  
-**Summary**: Remove the token  
+**Summary**: Remove the key  
 **Access**: public  
 **Example**  
 ```js
@@ -109,7 +103,7 @@ auth.removeKey();
 
 ### auth~getType() ⇒ <code>Promise.&lt;TokenType&gt;</code>
 **Kind**: inner method of [<code>auth</code>](#module_auth)  
-**Summary**: Gets the token type  
+**Summary**: Gets the key type  
 **Access**: public  
 **Example**  
 ```js
@@ -119,7 +113,7 @@ auth.getType().then((type) => { ... });
 
 ### auth~getKey() ⇒ <code>Promise.&lt;string&gt;</code>
 **Kind**: inner method of [<code>auth</code>](#module_auth)  
-**Summary**: Gets the token key  
+**Summary**: Gets the key  
 **Access**: public  
 **Example**  
 ```js
