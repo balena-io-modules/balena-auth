@@ -28,11 +28,9 @@ describe('ResinAuth', () => {
 		});
 
 		it('should return true when any key was successfully stored', () => {
-			return auth
-				.setKey(jwtFixtures.empty)
-				.then(() => {
-					expect(auth.hasKey()).to.eventually.equal(true);
-				});
+			return auth.setKey(jwtFixtures.empty).then(() => {
+				expect(auth.hasKey()).to.eventually.equal(true);
+			});
 		});
 
 		it('should return false again when the key is removed', () => {

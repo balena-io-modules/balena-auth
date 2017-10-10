@@ -45,7 +45,7 @@ export class ResinAuth {
 
 	/**
 	 * @member setKey
-	 * @summary Set the token key
+	 * @summary Set the key
 	 * @function
 	 * @public
 	 *
@@ -67,31 +67,25 @@ export class ResinAuth {
 
 	/**
 	 * @member hasKey
-	 * @summary Has a token
+	 * @summary Has a key
 	 * @function
 	 * @public
 	 *
-	 * @returns {Promise<Boolean>} has token
+	 * @returns {Promise<Boolean>} has key
 	 *
 	 * @example
-	 * auth.hasKey().then((hasKey) => {
-	 * 	if (hasKey) {
-	 * 		console.log('There is a key!');
-	 * 	} else {
-	 * 		console.log('There is not a key!');
-	 * 	}
-	 * });
+	 * auth.hasKey().then((hasKey) => { ... });
 	 */
 	public hasKey = () => this.storage.has(this.tokenKey);
 
 	/**
 	 * @member removeKey
-	 * @summary Remove the token
+	 * @summary Remove the key
 	 * @function
 	 * @public
 	 *
 	 * @description
-	 * This promise is not rejected if there was no token at the time of removal.
+	 * This promise is not rejected if there was no key at the time of removal.
 	 *
 	 * @returns {Promise}
 	 *
@@ -107,7 +101,7 @@ export class ResinAuth {
 
 	/**
 	 * @member getType
-	 * @summary Gets the token type
+	 * @summary Gets the key type
 	 * @function
 	 * @public
 	 *
@@ -121,7 +115,7 @@ export class ResinAuth {
 
 	/**
 	 * @member getKey
-	 * @summary Gets the token key
+	 * @summary Gets the key
 	 * @function
 	 * @public
 	 *
