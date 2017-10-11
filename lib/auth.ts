@@ -31,7 +31,7 @@ interface ResinAuthOptions {
 	tokenKey?: string;
 }
 
-export class ResinAuth {
+export default class ResinAuth {
 	private readonly storage: ResinSettingsStorage;
 	private readonly tokenKey: string;
 	private token?: Token;

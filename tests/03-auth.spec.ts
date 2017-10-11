@@ -1,5 +1,5 @@
 import { chai } from 'mochainon';
-import { ResinAuth } from '../lib/auth';
+import ResinAuth from '../lib/auth';
 import { TokenType } from '../lib/token';
 import apiKeyFixtures from './fixtures/api-keys';
 import jwtFixtures from './fixtures/jwts';
