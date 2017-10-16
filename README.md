@@ -42,7 +42,7 @@ It accepts the following params:
 
 **Example**
 ```js
-const ResinAuth = require('resin-auth');
+import ResinAuth from 'resin-auth';
 const auth = new ResinAuth({
 	dataDirectory: '/opt/cache/resin',
 	tokenKey: 'token'
