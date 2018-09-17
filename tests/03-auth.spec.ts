@@ -19,8 +19,7 @@ const auth = new ResinAuth({ dataDirectory, tokenKey: 'token-test' });
 describe('ResinAuth', () => {
 	beforeEach(() =>
 		// Ensure a clean state before starting
-		auth.removeKey()
-	);
+		auth.removeKey());
 
 	describe('.hasKey()/.removeKey()', () => {
 		it('should return false when no key was stored', () => {
