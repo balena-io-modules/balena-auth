@@ -1,30 +1,30 @@
-resin-auth
+balena-auth
 -----------
 
-[![npm version](https://badge.fury.io/js/resin-auth.svg)](http://badge.fury.io/js/resin-auth)
-[![dependencies](https://david-dm.org/resin-io-modules/resin-auth.png)](https://david-dm.org/resin-io-modules/resin-auth.png)
-[![Build Status](https://travis-ci.org/resin-io-modules/resin-auth.svg?branch=master)](https://travis-ci.org/resin-io-modules/resin-auth)
+[![npm version](https://badge.fury.io/js/balena-auth.svg)](http://badge.fury.io/js/balena-auth)
+[![dependencies](https://david-dm.org/balena-io-modules/balena-auth.png)](https://david-dm.org/balena-io-modules/balena-auth.png)
+[![Build Status](https://travis-ci.org/balena-io-modules/balena-auth.svg?branch=master)](https://travis-ci.org/balena-io-modules/balena-auth)
 
-Join our online chat at [![Gitter chat](https://badges.gitter.im/resin-io/chat.png)](https://gitter.im/resin-io/chat)
+Join our online chat at [![Gitter chat](https://badges.gitter.im/balena-io/chat.png)](https://gitter.im/balena-io/chat)
 
-Resin.io session authentication utilities
+Balena session authentication utilities
 
 Role
 ----
 
-The intention of this module is to provide low level access to how a Resin.io authentication tokens are parsed and persisted.
+The intention of this module is to provide low level access to how a balena authentication tokens are parsed and persisted.
 
 **THIS MODULE IS LOW LEVEL AND IS NOT MEANT TO BE USED BY END USERS DIRECTLY**.
 
-Unless you know what you're doing, use the [Resin SDK](https://github.com/resin-io/resin-sdk) instead.
+Unless you know what you're doing, use the [balena SDK](https://github.com/balena-io/balena-sdk) instead.
 
 Installation
 ------------
 
-Install `resin-auth` by running:
+Install `balena-auth` by running:
 
 ```sh
-$ npm install --save resin-auth
+$ npm install --save balena-auth
 ```
 
 Documentation
@@ -42,9 +42,9 @@ It accepts the following params:
 
 **Example**
 ```js
-import ResinAuth from 'resin-auth';
-const auth = new ResinAuth({
-	dataDirectory: '/opt/cache/resin',
+import BalenaAuth from 'balena-auth';
+const auth = new BalenaAuth({
+	dataDirectory: '/opt/cache/balena',
 	tokenKey: 'token'
 });
 ```
@@ -164,7 +164,7 @@ auth.needs2FA().then((needs2FA) => { ... });
 Support
 -------
 
-If you're having any problem, please [raise an issue](https://github.com/resin-io-modules/resin-auth/issues/new) on GitHub and the Resin.io team will be happy to help.
+If you're having any problem, please [raise an issue](https://github.com/balena-io-modules/balena-auth/issues/new) on GitHub and the balena team will be happy to help.
 
 Tests
 -----
@@ -178,8 +178,8 @@ $ npm test
 Contribute
 ----------
 
-- Issue Tracker: [github.com/resin-io-modules/resin-auth/issues](https://github.com/resin-io-modules/resin-auth/issues)
-- Source Code: [github.com/resin-io-modules/resin-auth](https://github.com/resin-io-modules/resin-auth)
+- Issue Tracker: [github.com/balena-io-modules/balena-auth/issues](https://github.com/balena-io-modules/balena-auth/issues)
+- Source Code: [github.com/balena-io-modules/balena-auth](https://github.com/balena-io-modules/balena-auth)
 
 Before submitting a PR, please make sure that you include tests, and that [tslint](https://palantir.github.io/tslint/) runs without any warning:
 
