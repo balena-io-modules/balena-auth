@@ -55,7 +55,7 @@
     "mochainon": "^2.0.0",
     "prettier": "~1.14.2",
     "require-npm4-to-publish": "^1.0.0",
-    "resin-config-karma": "^2.3.0",
+    "balena-config-karma": "^2.3.0",
     "balena-settings-client": "^4.0.0",
     "rimraf": "^2.6.1",
     "ts-node": "^3.3.0",
