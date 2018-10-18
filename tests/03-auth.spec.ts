@@ -1,5 +1,5 @@
 import { chai } from 'mochainon';
-import ResinAuth from '../lib/auth';
+import BalenaAuth from '../lib/auth';
 import { TokenType } from '../lib/token';
 import apiKeyFixtures from './fixtures/api-keys';
 import jwtFixtures from './fixtures/jwts';
@@ -10,13 +10,13 @@ const IS_BROWSER = typeof window !== 'undefined';
 let dataDirectory;
 if (!IS_BROWSER) {
 	// tslint:disable-next-line no-var-requires
-	const settings = require('resin-settings-client');
+	const settings = require('balena-settings-client');
 	dataDirectory = settings.get('dataDirectory');
 }
 
-const auth = new ResinAuth({ dataDirectory, tokenKey: 'token-test' });
+const auth = new BalenaAuth({ dataDirectory, tokenKey: 'token-test' });
 
-describe('ResinAuth', () => {
+describe('BalenaAuth', () => {
 	beforeEach(() =>
 		// Ensure a clean state before starting
 		auth.removeKey());

@@ -1,5 +1,5 @@
 /*
-Copyright 2016-17 Resin.io
+Copyright 2016-17 Balena
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -18,25 +18,26 @@ limitations under the License.
  * @module auth
  */
 
+import * as errors from 'balena-errors';
+import * as getStorage from 'balena-settings-storage';
+import { BalenaSettingsStorage } from 'balena-settings-storage/lib/types';
 import * as Promise from 'bluebird';
-import * as errors from 'resin-errors';
-import * as getStorage from 'resin-settings-storage';
-import { ResinSettingsStorage } from 'resin-settings-storage/lib/types';
+
 import { APIKey } from './api-key';
 import { JWT } from './jwt';
 import { Token, TokenType } from './token';
 
-interface ResinAuthOptions {
+interface BalenaAuthOptions {
 	dataDirectory?: string;
 	tokenKey?: string;
 }
 
-export default class ResinAuth {
-	private readonly storage: ResinSettingsStorage;
+export default class BalenaAuth {
+	private readonly storage: BalenaSettingsStorage;
 	private readonly tokenKey: string;
 	private token?: Token;
 
-	constructor({ dataDirectory, tokenKey = 'token' }: ResinAuthOptions = {}) {
+	constructor({ dataDirectory, tokenKey = 'token' }: BalenaAuthOptions = {}) {
 		this.storage = getStorage({ dataDirectory });
 		this.tokenKey = tokenKey;
 	}
@@ -188,10 +189,10 @@ export default class ResinAuth {
 	private createToken = (key: string): Token => {
 		const token: Token = JWT.isValid(key) ? new JWT(key) : new APIKey(key);
 		if (!token.isValid()) {
-			throw new errors.ResinMalformedToken(key);
+			throw new errors.BalenaMalformedToken(key);
 		}
 		if (token.isExpired()) {
-			throw new errors.ResinExpiredToken(key);
+			throw new errors.BalenaExpiredToken(key);
 		}
 		return token;
 	};
@@ -203,7 +204,7 @@ export default class ResinAuth {
 
 		return this.storage.get(this.tokenKey).then(key => {
 			if (typeof key !== 'string') {
-				throw new errors.ResinMalformedToken(key as any);
+				throw new errors.BalenaMalformedToken(key as any);
 			}
 			this.token = this.createToken(key as string);
 			return this.token;
