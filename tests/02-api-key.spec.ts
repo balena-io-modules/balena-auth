@@ -1,4 +1,4 @@
-import { chai } from 'mochainon';
+import * as chai from 'chai';
 import { APIKey } from '../lib/api-key';
 import { TokenType } from '../lib/token';
 import fixtures from './fixtures/api-keys';

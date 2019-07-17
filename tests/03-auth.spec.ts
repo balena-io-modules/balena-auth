@@ -1,9 +1,11 @@
-import { chai } from 'mochainon';
+import * as chai from 'chai';
+import * as chaiAsPromised from 'chai-as-promised';
 import BalenaAuth from '../lib/auth';
 import { TokenType } from '../lib/token';
 import apiKeyFixtures from './fixtures/api-keys';
 import jwtFixtures from './fixtures/jwts';
 
+chai.use(chaiAsPromised);
 const { expect } = chai;
 const IS_BROWSER = typeof window !== 'undefined';
 
@@ -19,7 +21,8 @@ const auth = new BalenaAuth({ dataDirectory, tokenKey: 'token-test' });
 describe('BalenaAuth', () => {
 	beforeEach(() =>
 		// Ensure a clean state before starting
-		auth.removeKey());
+		auth.removeKey()
+	);
 
 	describe('.hasKey()/.removeKey()', () => {
 		it('should return false when no key was stored', () => {

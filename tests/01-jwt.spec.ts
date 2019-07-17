@@ -1,4 +1,4 @@
-import { chai } from 'mochainon';
+import * as chai from 'chai';
 import { JWT } from '../lib/jwt';
 import { TokenType } from '../lib/token';
 import fixtures from './fixtures/jwts';
