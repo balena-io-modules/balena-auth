@@ -20,8 +20,17 @@ describe('APIKey', () => {
 	});
 
 	describe('.isValid()', () => {
-		it('should always return true', () => {
+		it('should return true for non-empty values', () => {
 			expect(apiKey.isValid()).to.equal(true);
+		});
+		it('should return false for empty token', () => {
+			expect(new APIKey('').isValid()).to.equal(false);
+		});
+		it('should return false for null/undefined values', () => {
+			expect(new APIKey((null as any) as string).isValid()).to.equal(false);
+			expect(new APIKey((undefined as any) as string).isValid()).to.equal(
+				false
+			);
 		});
 	});
 

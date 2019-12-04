@@ -60,7 +60,7 @@ export class APIKey implements Token {
 	 * @example
 	 * console.log(token.isValid());
 	 */
-	public isValid = (): boolean => true;
+	public isValid = (): boolean => !!this.key;
 
 	/**
 	 * @member getAge
