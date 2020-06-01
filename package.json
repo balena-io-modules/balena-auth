@@ -3,7 +3,7 @@
   "version": "3.0.1",
   "description": "Balena session authentication utilities",
   "main": "build/auth.js",
-  "types": "lib/*.ts",
+  "types": "build/auth.d.ts",
   "homepage": "https://github.com/balena-io-modules/balena-auth",
   "repository": {
     "type": "git",
