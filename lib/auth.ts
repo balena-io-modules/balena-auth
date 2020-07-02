@@ -21,7 +21,6 @@ limitations under the License.
 import * as errors from 'balena-errors';
 import * as getStorage from 'balena-settings-storage';
 import { BalenaSettingsStorage } from 'balena-settings-storage/lib/types';
-import * as Promise from 'bluebird';
 
 import { APIKey } from './api-key';
 import { JWT } from './jwt';
@@ -56,14 +55,10 @@ export default class BalenaAuth {
 	 * @example
 	 * auth.setKey('...').then(() => { ... });
 	 */
-	public setKey = (key: string): Promise<void> => {
-		try {
-			this.token = this.createToken(key);
-			// Do not override the current key if the new one is invalid
-			return Promise.resolve(this.storage.set(this.tokenKey, key));
-		} catch (err) {
-			return Promise.reject(err);
-		}
+	public setKey = async (key: string): Promise<void> => {
+		this.token = this.createToken(key);
+		// Do not override the current key if the new one is invalid
+		return this.storage.set(this.tokenKey, key);
 	};
 
 	/**
@@ -77,8 +72,7 @@ export default class BalenaAuth {
 	 * @example
 	 * auth.hasKey().then((hasKey) => { ... });
 	 */
-	public hasKey = (): Promise<boolean> =>
-		Promise.resolve(this.storage.has(this.tokenKey));
+	public hasKey = (): Promise<boolean> => this.storage.has(this.tokenKey);
 
 	/**
 	 * @member removeKey
@@ -96,7 +90,7 @@ export default class BalenaAuth {
 	 */
 	public removeKey = (): Promise<void> => {
 		this.token = undefined;
-		return Promise.resolve(this.storage.remove(this.tokenKey));
+		return this.storage.remove(this.tokenKey);
 	};
 
 	// Proxy promisified Token methods
@@ -112,8 +106,10 @@ export default class BalenaAuth {
 	 * @example
 	 * auth.getType().then((type) => { ... });
 	 */
-	public getType = (): Promise<TokenType> =>
-		this.getToken().then((token) => token.type);
+	public getType = async (): Promise<TokenType> => {
+		const token = await this.getToken();
+		return token.type;
+	};
 
 	/**
 	 * @member getKey
@@ -126,8 +122,10 @@ export default class BalenaAuth {
 	 * @example
 	 * auth.getKey().then((key) => { ... });
 	 */
-	public getKey = (): Promise<string> =>
-		this.getToken().then((token) => token.key);
+	public getKey = async (): Promise<string> => {
+		const token = await this.getToken();
+		return token.key;
+	};
 
 	/**
 	 * @member getAge
@@ -140,8 +138,10 @@ export default class BalenaAuth {
 	 * @example
 	 * auth.getAge().then((age) => { ... });
 	 */
-	public getAge = (): Promise<number | undefined> =>
-		this.getToken().then((token) => token.getAge());
+	public getAge = async (): Promise<number | undefined> => {
+		const token = await this.getToken();
+		return token.getAge();
+	};
 
 	/**
 	 * @member isExpired
@@ -154,8 +154,10 @@ export default class BalenaAuth {
 	 * @example
 	 * auth.isExpired().then((expired) => { ... });
 	 */
-	public isExpired = (): Promise<boolean> =>
-		this.getToken().then((token) => token.isExpired());
+	public isExpired = async (): Promise<boolean> => {
+		const token = await this.getToken();
+		return token.isExpired();
+	};
 
 	/**
 	 * @member isValid
@@ -168,8 +170,10 @@ export default class BalenaAuth {
 	 * @example
 	 * auth.isValid().then((valid) => { ... });
 	 */
-	public isValid = (): Promise<boolean> =>
-		this.getToken().then((token) => token.isValid());
+	public isValid = async (): Promise<boolean> => {
+		const token = await this.getToken();
+		return token.isValid();
+	};
 
 	/**
 	 * @member needs2FA
@@ -182,8 +186,10 @@ export default class BalenaAuth {
 	 * @example
 	 * auth.needs2FA().then((needs2FA) => { ... });
 	 */
-	public needs2FA = (): Promise<boolean> =>
-		this.getToken().then((token) => token.needs2FA());
+	public needs2FA = async (): Promise<boolean> => {
+		const token = await this.getToken();
+		return token.needs2FA();
+	};
 
 	// Utility methods
 
@@ -198,17 +204,16 @@ export default class BalenaAuth {
 		return token;
 	};
 
-	private getToken = (): Promise<Token> => {
+	private getToken = async (): Promise<Token> => {
 		if (this.token) {
-			return Promise.resolve(this.token);
+			return this.token;
 		}
 
-		return Promise.resolve(this.storage.get(this.tokenKey)).then((key) => {
-			if (typeof key !== 'string') {
-				throw new errors.BalenaMalformedToken(key as any);
-			}
-			this.token = this.createToken(key as string);
-			return this.token;
-		});
+		const key = await this.storage.get(this.tokenKey);
+		if (typeof key !== 'string') {
+			throw new errors.BalenaMalformedToken(key as any);
+		}
+		this.token = this.createToken(key as string);
+		return this.token;
 	};
 }
