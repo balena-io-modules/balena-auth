@@ -61,16 +61,17 @@
     "typescript": "^3.9.6"
   },
   "dependencies": {
-    "@types/bluebird": "^3.5.32",
     "@types/jwt-decode": "^2.2.1",
     "balena-errors": "^4.2.1",
-    "balena-settings-storage": "^5.0.0",
-    "bluebird": "^3.7.2",
+    "balena-settings-storage": "^6.0.0",
     "jwt-decode": "^2.2.0"
   },
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint && npm run test:node -- --reporter dot"
     }
+  },
+  "engines": {
+    "node": ">=10.17.0"
   }
 }
