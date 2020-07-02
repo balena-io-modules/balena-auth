@@ -13,18 +13,18 @@ const empty = {};
 const two2FA = {
 	iat: nowInSec(),
 	exp: deltaInSec(100),
-	twoFactorRequired: true
+	twoFactorRequired: true,
 };
 
 const expired = {
 	iat: deltaInSec(-2),
 	exp: deltaInSec(-10),
-	twoFactorRequired: false
+	twoFactorRequired: false,
 };
 
 export default {
 	empty: signToken(empty),
 	expired: signToken(expired),
 	two2FA: signToken(two2FA),
-	invalid: 'ashjda/asdashsg/adaasddas'
+	invalid: 'ashjda/asdashsg/adaasddas',
 };

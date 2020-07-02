@@ -19,7 +19,7 @@ const auth = new BalenaAuth({ dataDirectory, tokenKey: 'token-test' });
 describe('BalenaAuth', () => {
 	beforeEach(() =>
 		// Ensure a clean state before starting
-		auth.removeKey()
+		auth.removeKey(),
 	);
 
 	describe('.hasKey()/.removeKey()', () => {

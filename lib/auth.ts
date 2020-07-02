@@ -112,7 +112,7 @@ export default class BalenaAuth {
 	 * auth.getType().then((type) => { ... });
 	 */
 	public getType = (): Promise<TokenType> =>
-		this.getToken().then(token => token.type);
+		this.getToken().then((token) => token.type);
 
 	/**
 	 * @member getKey
@@ -126,7 +126,7 @@ export default class BalenaAuth {
 	 * auth.getKey().then((key) => { ... });
 	 */
 	public getKey = (): Promise<string> =>
-		this.getToken().then(token => token.key);
+		this.getToken().then((token) => token.key);
 
 	/**
 	 * @member getAge
@@ -140,7 +140,7 @@ export default class BalenaAuth {
 	 * auth.getAge().then((age) => { ... });
 	 */
 	public getAge = (): Promise<number | undefined> =>
-		this.getToken().then(token => token.getAge());
+		this.getToken().then((token) => token.getAge());
 
 	/**
 	 * @member isExpired
@@ -154,7 +154,7 @@ export default class BalenaAuth {
 	 * auth.isExpired().then((expired) => { ... });
 	 */
 	public isExpired = (): Promise<boolean> =>
-		this.getToken().then(token => token.isExpired());
+		this.getToken().then((token) => token.isExpired());
 
 	/**
 	 * @member isValid
@@ -168,7 +168,7 @@ export default class BalenaAuth {
 	 * auth.isValid().then((valid) => { ... });
 	 */
 	public isValid = (): Promise<boolean> =>
-		this.getToken().then(token => token.isValid());
+		this.getToken().then((token) => token.isValid());
 
 	/**
 	 * @member needs2FA
@@ -182,7 +182,7 @@ export default class BalenaAuth {
 	 * auth.needs2FA().then((needs2FA) => { ... });
 	 */
 	public needs2FA = (): Promise<boolean> =>
-		this.getToken().then(token => token.needs2FA());
+		this.getToken().then((token) => token.needs2FA());
 
 	// Utility methods
 
@@ -202,7 +202,7 @@ export default class BalenaAuth {
 			return Promise.resolve(this.token);
 		}
 
-		return this.storage.get(this.tokenKey).then(key => {
+		return this.storage.get(this.tokenKey).then((key) => {
 			if (typeof key !== 'string') {
 				throw new errors.BalenaMalformedToken(key as any);
 			}
