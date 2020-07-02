@@ -29,5 +29,5 @@ export interface Token {
 
 export enum TokenType {
 	JWT,
-	APIKey
+	APIKey,
 }

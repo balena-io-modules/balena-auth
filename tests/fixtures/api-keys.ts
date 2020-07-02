@@ -1,3 +1,3 @@
 export default {
-	apiKey: 'askjdhas632hsa8shda6'
+	apiKey: 'askjdhas632hsa8shda6',
 };
