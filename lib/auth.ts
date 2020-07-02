@@ -60,7 +60,7 @@ export default class BalenaAuth {
 		try {
 			this.token = this.createToken(key);
 			// Do not override the current key if the new one is invalid
-			return this.storage.set(this.tokenKey, key);
+			return Promise.resolve(this.storage.set(this.tokenKey, key));
 		} catch (err) {
 			return Promise.reject(err);
 		}
@@ -77,7 +77,8 @@ export default class BalenaAuth {
 	 * @example
 	 * auth.hasKey().then((hasKey) => { ... });
 	 */
-	public hasKey = () => this.storage.has(this.tokenKey);
+	public hasKey = (): Promise<boolean> =>
+		Promise.resolve(this.storage.has(this.tokenKey));
 
 	/**
 	 * @member removeKey
@@ -93,9 +94,9 @@ export default class BalenaAuth {
 	 * @example
 	 * auth.removeKey();
 	 */
-	public removeKey = () => {
+	public removeKey = (): Promise<void> => {
 		this.token = undefined;
-		return this.storage.remove(this.tokenKey);
+		return Promise.resolve(this.storage.remove(this.tokenKey));
 	};
 
 	// Proxy promisified Token methods
@@ -202,7 +203,7 @@ export default class BalenaAuth {
 			return Promise.resolve(this.token);
 		}
 
-		return this.storage.get(this.tokenKey).then((key) => {
+		return Promise.resolve(this.storage.get(this.tokenKey)).then((key) => {
 			if (typeof key !== 'string') {
 				throw new errors.BalenaMalformedToken(key as any);
 			}

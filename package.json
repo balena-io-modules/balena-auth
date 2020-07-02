@@ -64,7 +64,7 @@
     "@types/bluebird": "^3.5.32",
     "@types/jwt-decode": "^2.2.1",
     "balena-errors": "^4.2.1",
-    "balena-settings-storage": "^5.0.0",
+    "balena-settings-storage": "^6.0.0",
     "bluebird": "^3.7.2",
     "jwt-decode": "^2.2.0"
   },
