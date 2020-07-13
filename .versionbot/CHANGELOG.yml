@@ -1,0 +1,159 @@
+- commits:
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: patch
+    hash: 756c63445733bb8e7f36014853ac19ca0195d5f9
+    subject: Explicitly add tslib dependency
+  date: "2020-07-03T17:54:56Z"
+  version: 4.0.1
+- commits:
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: major
+    hash: 7935d9a0fbd576eb2ec651b1f7c879401954f3fe
+    subject: Update to balena-settings-storage 6.x
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: major
+    hash: 5c60288aa585b8046e707c2388be290b273cbe59
+    subject: Update target to es2015
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: major
+    hash: a79c4574b3964ddd59e18844de046751182a35aa
+    subject: Switch to native promises
+  - author: Pagan Gazzard
+    body: ""
+    hash: 1d84aca2cdaa0b11ace2dafd44099fd7340ba290
+    subject: Enable strict type checking
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: major
+    hash: 8248bf5bba4f972a3b262fe8317caa27281f6ea8
+    subject: Specify node 10+
+  date: "2020-07-02T15:23:00Z"
+  version: 4.0.0
+- commits:
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: patch
+    hash: 6dbc95de3543cddab72ba6516cb998a212e63151
+    subject: Switch to @balena/lint for linting
+  date: "2020-07-02T14:58:05Z"
+  version: 3.1.1
+- commits:
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: minor
+    hash: c58ea5cf02ad88a04248575d59667327b5cefbfd
+    subject: Generate and use type declarations
+  date: "2020-06-01T15:04:18Z"
+  version: 3.1.0
+- commits:
+  - author: Pagan Gazzard
+    body: ""
+    footers:
+      change-type: patch
+    hash: e18e48f6dcc2e6a1a4535ea3472b856de61435d2
+    subject: Update dependencies
+  date: "2020-01-21T12:25:53Z"
+  version: 3.0.1
+- commits:
+  - author: Tim Perry
+    body: ""
+    footers:
+      change-type: major
+      signed-off-by: Tim Perry <tim@balena.io>
+    hash: 7dbeac772630ae11ebbf6bd8041729c71775d875
+    subject: Rename everything 'resin' to 'balena'
+  - author: Tim Perry
+    body: ""
+    hash: 1413508cc93f42b371f017e23ab7dc7e7e554dcc
+    subject: Switch to the new balena-config-karma
+  date: "2018-10-18T08:08:51Z"
+  version: 3.0.0
+- commits:
+  - author: Thodoris Greasidis
+    body: ""
+    footers:
+      signed-off-by: Thodoris Greasidis <thodoris@resin.io>
+    hash: a1c0be6a7cb8379cff515c3f5b5934055671e207
+    subject: Disable package-lock
+  - author: Thodoris Greasidis
+    body: ""
+    footers:
+      change-type: patch
+      connects-to: '#14'
+      signed-off-by: Thodoris Greasidis <thodoris@resin.io>
+    hash: c26ab7d4f5b3edc636cfe8c1141df9a79313aac6
+    subject: Use resinCI for publishing to npm
+  - author: Thodoris Greasidis
+    body: ""
+    footers:
+      change-type: patch
+      signed-off-by: Thodoris Greasidis <thodoris@resin.io>
+    hash: 8abd40c6b33f6f5a50e6473849b53279b77a6843
+    subject: Pin bluebird typings & prettier versions to fix the tests
+  date: "2018-09-17T13:37:28Z"
+  version: 2.0.1
+- commits:
+  - author: MoranF
+    body: 'Connects-To: #11'
+    footers:
+      change-type: major
+    hash: db2e168d6399c474ed9bbb92f76de3fb6f50dae9
+    subject: Expose ResinAuth instead of ResinAuth.ResinAuth
+  date: "2017-10-16T14:57:44Z"
+  version: 2.0.0
+- commits:
+  - author: Tim Perry
+    body: ""
+    footers:
+      change-type: patch
+    hash: b32828b26cbe191701762454d3aa0f5c21a2b838
+    subject: Keep build output after tests, so we can deploy it
+  date: "2017-10-10T18:55:42Z"
+  version: 1.0.3
+- commits:
+  - author: Ariel Flesler
+    body: ""
+    footers:
+      change-type: patch
+    hash: 4ddad5524dc596f2097d4ff869bd49eeedf5e8aa
+    subject: Ignore & remove all built files, but publish them once generated
+  date: "2017-10-10T17:59:51Z"
+  version: 1.0.2
+- commits:
+  - author: Ariel Flesler
+    body: ""
+    footers:
+      change-type: patch
+    hash: 4ffafbeeb53f435f466ca4dd1dbd8c0b9d0bf082
+    subject: Change project repo to resin-io-modules
+  date: "2017-10-09T17:49:41Z"
+  version: 1.0.1
+- commits:
+  - author: Ariel Flesler
+    body: ""
+    footers:
+      change-type: major
+    hash: 3e7444eafb64eb0600686dccced0245e2cd4a4c7
+    subject: Support auth with both JWTs and API Keys
+  date: "2017-10-04T14:11:32Z"
+  version: 1.0.0
+- commits:
+  - author: Heds Simons
+    body: ""
+    footers:
+      change-type: patch
+    hash: 2ec48a02250dff6e4403a1505cd245c8b2b24954
+    subject: Correct the `CHANGELOG.md` file.
+  date: "2017-10-04T13:42:39Z"
+  version: 0.9.1
