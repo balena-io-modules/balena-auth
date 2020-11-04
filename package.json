@@ -62,8 +62,8 @@
   },
   "dependencies": {
     "@types/jwt-decode": "^2.2.1",
-    "balena-errors": "^4.2.1",
-    "balena-settings-storage": "^6.0.0",
+    "balena-errors": "^4.7.1",
+    "balena-settings-storage": "^7.0.0",
     "jwt-decode": "^2.2.0",
     "tslib": "^2.0.0"
   },
