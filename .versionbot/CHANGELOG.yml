@@ -1,4 +1,15 @@
 - commits:
+    - subject: Update balena-settings-storage from 6.0.0 to 7.0.0
+      hash: 75ee6cdf7f9445792d8339eb7c4b9df4e0304cc2
+      body: |
+        Update balena-errors from 4.2.1 to 4.7.1
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: josecoelho
+  version: 4.1.0
+  date: 2020-11-04T01:01:29.112Z
+- commits:
     - subject: Add .versionbot/CHANGELOG.yml for nested changelogs
       hash: 286d4797c6d5cfd755cf6d04bb70169e6bb2b92f
       body: ''
