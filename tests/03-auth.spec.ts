@@ -1,10 +1,12 @@
-import { chai } from 'mochainon';
-import BalenaAuth from '../lib/auth';
-import { TokenType } from '../lib/token';
-import apiKeyFixtures from './fixtures/api-keys';
-import jwtFixtures from './fixtures/jwts';
+import * as chai from 'chai';
+import { expect } from 'chai';
+import * as chaiAsPromised from 'chai-as-promised';
+import BalenaAuth from '../build/auth';
+import { TokenType } from '../build/token';
+import * as apiKeyFixtures from './fixtures/api-keys';
+import * as jwtFixtures from './fixtures/jwts';
+chai.use(chaiAsPromised);
 
-const { expect } = chai;
 const IS_BROWSER = typeof window !== 'undefined';
 
 let dataDirectory;
