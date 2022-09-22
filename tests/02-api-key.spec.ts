@@ -1,9 +1,8 @@
-import { chai } from 'mochainon';
-import { APIKey } from '../lib/api-key';
-import { TokenType } from '../lib/token';
-import fixtures from './fixtures/api-keys';
+import { expect } from 'chai';
+import { APIKey } from '../build/api-key';
+import { TokenType } from '../build/token';
+import * as fixtures from './fixtures/api-keys';
 
-const { expect } = chai;
 const apiKey = new APIKey(fixtures.apiKey);
 
 describe('APIKey', () => {

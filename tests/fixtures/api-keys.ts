@@ -1,3 +1,1 @@
-export default {
-	apiKey: 'askjdhas632hsa8shda6',
-};
+export const apiKey = 'askjdhas632hsa8shda6';

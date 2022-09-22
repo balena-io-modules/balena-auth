@@ -1,10 +1,7 @@
-import { chai } from 'mochainon';
-import { JWT } from '../lib/jwt';
-import { TokenType } from '../lib/token';
-import fixtures from './fixtures/jwts';
-
-const { expect } = chai;
-const { empty, expired, two2FA, invalid } = fixtures;
+import { expect } from 'chai';
+import { JWT } from '../build/jwt';
+import { TokenType } from '../build/token';
+import { empty, expired, two2FA, invalid } from './fixtures/jwts';
 
 function getJWT(key: string) {
 	return new JWT(key);
