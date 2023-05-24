@@ -176,8 +176,24 @@ export default class BalenaAuth {
 	};
 
 	/**
+	 * @member has2FA
+	 * @summary Checks whether 2FA is enabled
+	 * @function
+	 * @public
+	 *
+	 * @returns {Promise<boolean>}
+	 *
+	 * @example
+	 * auth.has2FA().then((has2FA) => { ... });
+	 */
+	public has2FA = async (): Promise<boolean> => {
+		const token = await this.getToken();
+		return token.has2FA();
+	};
+
+	/**
 	 * @member needs2FA
-	 * @summary Checks whether 2FA is needed
+	 * @summary Checks whether passing 2FA is pending/needed
 	 * @function
 	 * @public
 	 *

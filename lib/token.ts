@@ -24,6 +24,7 @@ export interface Token {
 	getAge: () => number | undefined;
 	isExpired: () => boolean;
 	isValid: () => boolean;
+	has2FA: () => boolean;
 	needs2FA: () => boolean;
 }
 

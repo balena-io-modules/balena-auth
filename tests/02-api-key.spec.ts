@@ -36,6 +36,12 @@ describe('APIKey', () => {
 		});
 	});
 
+	describe('.has2FA()', () => {
+		it('should always return false', () => {
+			expect(apiKey.has2FA()).to.equal(false);
+		});
+	});
+
 	describe('.needs2FA()', () => {
 		it('should always return false', () => {
 			expect(apiKey.needs2FA()).to.equal(false);

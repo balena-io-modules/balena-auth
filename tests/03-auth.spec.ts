@@ -81,6 +81,12 @@ describe('BalenaAuth', () => {
 				});
 			});
 
+			describe('.has2FA()', () => {
+				it('should return false when there is no `twoFactorRequired`', () => {
+					expect(auth.has2FA()).to.eventually.equal(false);
+				});
+			});
+
 			describe('.needs2FA()', () => {
 				it('should return false when there is no `twoFactorRequired`', () => {
 					expect(auth.needs2FA()).to.eventually.equal(false);
@@ -118,6 +124,12 @@ describe('BalenaAuth', () => {
 			describe('.isExpired()', () => {
 				it('should always return false', () => {
 					expect(auth.isExpired()).to.eventually.equal(false);
+				});
+			});
+
+			describe('.has2FA()', () => {
+				it('should always return false', () => {
+					expect(auth.has2FA()).to.eventually.equal(false);
 				});
 			});
 

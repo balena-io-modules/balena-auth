@@ -115,6 +115,19 @@ export class JWT implements Token {
 	};
 
 	/**
+	 * @member has2FA
+	 * @summary Checks whether 2FA is enabled
+	 * @function
+	 * @public
+	 *
+	 * @returns {boolean}
+	 *
+	 * @example
+	 * console.log(token.has2FA());
+	 */
+	public has2FA = (): boolean => JWT.parse(this.key).twoFactorRequired != null;
+
+	/**
 	 * @member needs2FA
 	 * @summary Check if the given token requires 2FA
 	 * @function

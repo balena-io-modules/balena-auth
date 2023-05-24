@@ -56,6 +56,20 @@ describe('JWT', () => {
 		});
 	});
 
+	describe('.has2FA()', () => {
+		it('should return false when there is no `twoFactorRequired`', () => {
+			expect(getJWT(empty).has2FA()).to.equal(false);
+		});
+
+		it('should return true when `twoFactorRequired` is `false`', () => {
+			expect(getJWT(expired).has2FA()).to.equal(true);
+		});
+
+		it('should return true when `twoFactorRequired` is `true`', () => {
+			expect(getJWT(two2FA).has2FA()).to.equal(true);
+		});
+	});
+
 	describe('.needs2FA()', () => {
 		it('should return false when there is no `twoFactorRequired`', () => {
 			expect(getJWT(empty).needs2FA()).to.equal(false);
