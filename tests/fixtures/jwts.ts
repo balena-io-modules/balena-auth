@@ -10,10 +10,16 @@ const deltaInSec = (delaySec: number) => nowInSec() + delaySec;
 
 export const empty = signToken({});
 
-export const two2FA = signToken({
+export const pending2FA = signToken({
 	iat: nowInSec(),
 	exp: deltaInSec(100),
 	twoFactorRequired: true,
+});
+
+export const passed2FA = signToken({
+	iat: nowInSec(),
+	exp: deltaInSec(100),
+	twoFactorRequired: false,
 });
 
 export const expired = signToken({

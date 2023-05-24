@@ -176,8 +176,26 @@ export default class BalenaAuth {
 	};
 
 	/**
+	 * @member get2FAStatus
+	 * @summary Gets whether passing a 2FA challenge is pending, passed or not required.
+	 * @function
+	 * @public
+	 *
+	 * @returns {Promise<'not_required'|'pending'|'passed'>}
+	 *
+	 * @example
+	 * auth.get2FAStatus().then((get2FAStatus) => { ... });
+	 */
+	public get2FAStatus = async (): Promise<
+		'not_required' | 'pending' | 'passed'
+	> => {
+		const token = await this.getToken();
+		return token.get2FAStatus();
+	};
+
+	/**
 	 * @member needs2FA
-	 * @summary Checks whether 2FA is needed
+	 * @summary Checks whether passing 2FA is pending/needed
 	 * @function
 	 * @public
 	 *
@@ -187,8 +205,8 @@ export default class BalenaAuth {
 	 * auth.needs2FA().then((needs2FA) => { ... });
 	 */
 	public needs2FA = async (): Promise<boolean> => {
-		const token = await this.getToken();
-		return token.needs2FA();
+		const status = await this.get2FAStatus();
+		return status === 'pending';
 	};
 
 	// Utility methods

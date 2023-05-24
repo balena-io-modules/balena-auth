@@ -77,9 +77,53 @@ describe('BalenaAuth', () => {
 				});
 			});
 
-			describe('.needs2FA()', () => {
-				it('should return false when there is no `twoFactorRequired`', async () => {
-					await expect(auth.needs2FA()).to.eventually.equal(false);
+			describe('given a token where there is no `twoFactorRequired`', () => {
+				beforeEach(() => auth.setKey(jwtFixtures.empty));
+
+				describe('.get2FAStatus()', () => {
+					it('should return `not_required`', async () => {
+						await expect(auth.get2FAStatus()).to.eventually.equal(
+							'not_required',
+						);
+					});
+				});
+
+				describe('.needs2FA()', () => {
+					it('should return false', async () => {
+						await expect(auth.needs2FA()).to.eventually.equal(false);
+					});
+				});
+			});
+
+			describe('given a token where `twoFactorRequired` is `false`', () => {
+				beforeEach(() => auth.setKey(jwtFixtures.passed2FA));
+
+				describe('.get2FAStatus()', () => {
+					it('should return `passed`', async () => {
+						await expect(auth.get2FAStatus()).to.eventually.equal('passed');
+					});
+				});
+
+				describe('.needs2FA()', () => {
+					it('should return false', async () => {
+						await expect(auth.needs2FA()).to.eventually.equal(false);
+					});
+				});
+			});
+
+			describe('given a token where `twoFactorRequired` is `true`', () => {
+				beforeEach(() => auth.setKey(jwtFixtures.pending2FA));
+
+				describe('.get2FAStatus()', () => {
+					it('should return `pending`', async () => {
+						await expect(auth.get2FAStatus()).to.eventually.equal('pending');
+					});
+				});
+
+				describe('.needs2FA()', () => {
+					it('should return true', async () => {
+						await expect(auth.needs2FA()).to.eventually.equal(true);
+					});
 				});
 			});
 		});
@@ -116,6 +160,12 @@ describe('BalenaAuth', () => {
 			describe('.isExpired()', () => {
 				it('should always return false', async () => {
 					await expect(auth.isExpired()).to.eventually.equal(false);
+				});
+			});
+
+			describe('.get2FAStatus()', () => {
+				it('should always return `not_required`', async () => {
+					await expect(auth.get2FAStatus()).to.eventually.equal('not_required');
 				});
 			});
 

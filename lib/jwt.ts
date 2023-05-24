@@ -115,15 +115,26 @@ export class JWT implements Token {
 	};
 
 	/**
-	 * @member needs2FA
-	 * @summary Check if the given token requires 2FA
+	 * @member get2FAStatus
+	 * @summary Gets whether passing a 2FA challenge is pending, passed or not required.
 	 * @function
 	 * @public
 	 *
-	 * @returns {boolean}
+	 * @returns {'not_required'|'pending'|'passed'}
 	 *
 	 * @example
-	 * console.log(token.needs2FA());
+	 * console.log(token.get2FAStatus())
 	 */
-	public needs2FA = (): boolean => !!JWT.parse(this.key).twoFactorRequired;
+	public get2FAStatus = () => {
+		const { twoFactorRequired } = JWT.parse(this.key);
+		if (twoFactorRequired == null) {
+			return 'not_required';
+		}
+
+		if (twoFactorRequired) {
+			return 'pending';
+		}
+
+		return 'passed';
+	};
 }

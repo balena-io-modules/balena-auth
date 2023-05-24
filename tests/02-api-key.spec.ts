@@ -36,9 +36,9 @@ describe('APIKey', () => {
 		});
 	});
 
-	describe('.needs2FA()', () => {
-		it('should always return false', () => {
-			expect(apiKey.needs2FA()).to.equal(false);
+	describe('.get2FAStatus()', () => {
+		it('should always return `not_required`', () => {
+			expect(apiKey.get2FAStatus()).to.equal('not_required');
 		});
 	});
 });
