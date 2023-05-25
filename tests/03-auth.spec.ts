@@ -25,23 +25,19 @@ describe('BalenaAuth', () => {
 	);
 
 	describe('.hasKey()/.removeKey()', () => {
-		it('should return false when no key was stored', () => {
-			expect(auth.hasKey()).to.eventually.equal(false);
+		it('should return false when no key was stored', async () => {
+			await expect(auth.hasKey()).to.eventually.equal(false);
 		});
 
-		it('should return true when any key was successfully stored', () => {
-			return auth.setKey(jwtFixtures.empty).then(() => {
-				expect(auth.hasKey()).to.eventually.equal(true);
-			});
+		it('should return true when any key was successfully stored', async () => {
+			await auth.setKey(jwtFixtures.empty);
+			await expect(auth.hasKey()).to.eventually.equal(true);
 		});
 
-		it('should return false again when the key is removed', () => {
-			return auth
-				.setKey(jwtFixtures.empty)
-				.then(() => auth.removeKey())
-				.then(() => {
-					expect(auth.hasKey()).to.eventually.equal(false);
-				});
+		it('should return false again when the key is removed', async () => {
+			await auth.setKey(jwtFixtures.empty);
+			await auth.removeKey();
+			await expect(auth.hasKey()).to.eventually.equal(false);
 		});
 	});
 
@@ -52,38 +48,38 @@ describe('BalenaAuth', () => {
 			beforeEach(() => auth.setKey(jwtFixtures.empty));
 
 			describe('.getType()', () => {
-				it('should always return TokenType.JWT', () => {
-					expect(auth.getType()).to.eventually.equal(TokenType.JWT);
+				it('should always return TokenType.JWT', async () => {
+					await expect(auth.getType()).to.eventually.equal(TokenType.JWT);
 				});
 			});
 
 			describe('.getKey()', () => {
-				it('should return the same key provided originally', () => {
-					expect(auth.getKey()).to.eventually.equal(jwtFixtures.empty);
+				it('should return the same key provided originally', async () => {
+					await expect(auth.getKey()).to.eventually.equal(jwtFixtures.empty);
 				});
 			});
 
 			describe('.isValid()', () => {
-				it('should return true for a valid JWT', () => {
-					expect(auth.isValid()).to.eventually.equal(true);
+				it('should return true for a valid JWT', async () => {
+					await expect(auth.isValid()).to.eventually.equal(true);
 				});
 			});
 
 			describe('.getAge()', () => {
-				it('should return `undefined` when there is no `iat`', () => {
-					expect(auth.getAge()).to.eventually.equal(undefined);
+				it('should return `undefined` when there is no `iat`', async () => {
+					await expect(auth.getAge()).to.eventually.equal(undefined);
 				});
 			});
 
 			describe('.isExpired()', () => {
-				it('should return false when there is no `exp`', () => {
-					expect(auth.isExpired()).to.eventually.equal(false);
+				it('should return false when there is no `exp`', async () => {
+					await expect(auth.isExpired()).to.eventually.equal(false);
 				});
 			});
 
 			describe('.needs2FA()', () => {
-				it('should return false when there is no `twoFactorRequired`', () => {
-					expect(auth.needs2FA()).to.eventually.equal(false);
+				it('should return false when there is no `twoFactorRequired`', async () => {
+					await expect(auth.needs2FA()).to.eventually.equal(false);
 				});
 			});
 		});
@@ -92,38 +88,40 @@ describe('BalenaAuth', () => {
 			beforeEach(() => auth.setKey(apiKeyFixtures.apiKey));
 
 			describe('.getType()', () => {
-				it('should always return TokenType.APIKey', () => {
-					expect(auth.getType()).to.eventually.equal(TokenType.APIKey);
+				it('should always return TokenType.APIKey', async () => {
+					await expect(auth.getType()).to.eventually.equal(TokenType.APIKey);
 				});
 			});
 
 			describe('.getKey()', () => {
-				it('should return the same key provided originally', () => {
-					expect(auth.getKey()).to.eventually.equal(apiKeyFixtures.apiKey);
+				it('should return the same key provided originally', async () => {
+					await expect(auth.getKey()).to.eventually.equal(
+						apiKeyFixtures.apiKey,
+					);
 				});
 			});
 
 			describe('.isValid()', () => {
-				it('should always return true', () => {
-					expect(auth.isValid()).to.eventually.equal(true);
+				it('should always return true', async () => {
+					await expect(auth.isValid()).to.eventually.equal(true);
 				});
 			});
 
 			describe('.getAge()', () => {
-				it('should always return 0', () => {
-					expect(auth.getAge()).to.eventually.equal(0);
+				it('should always return 0', async () => {
+					await expect(auth.getAge()).to.eventually.equal(0);
 				});
 			});
 
 			describe('.isExpired()', () => {
-				it('should always return false', () => {
-					expect(auth.isExpired()).to.eventually.equal(false);
+				it('should always return false', async () => {
+					await expect(auth.isExpired()).to.eventually.equal(false);
 				});
 			});
 
 			describe('.needs2FA()', () => {
-				it('should always return false', () => {
-					expect(auth.needs2FA()).to.eventually.equal(false);
+				it('should always return false', async () => {
+					await expect(auth.needs2FA()).to.eventually.equal(false);
 				});
 			});
 		});
