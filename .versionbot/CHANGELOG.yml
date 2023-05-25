@@ -1,4 +1,16 @@
 - commits:
+    - subject: Add a get2FAStatus() method
+      hash: 266c8bc9b12d13fd96ce0ae6b12d7767a27030d8
+      body: ""
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Thodoris Greasidis
+      nested: []
+  version: 4.2.0
+  title: ""
+  date: 2023-05-25T12:06:34.551Z
+- commits:
     - subject: Fix async tests not waiting for the result
       hash: 027af56893911b7b6a95c6743eb90cae86cc3f86
       body: ""
