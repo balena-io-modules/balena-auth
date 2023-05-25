@@ -1,7 +1,13 @@
 import { expect } from 'chai';
 import { JWT } from '../build/jwt';
 import { TokenType } from '../build/token';
-import { empty, expired, two2FA, invalid } from './fixtures/jwts';
+import {
+	empty,
+	expired,
+	passed2FA,
+	pending2FA,
+	invalid,
+} from './fixtures/jwts';
 
 function getJWT(key: string) {
 	return new JWT(key);
@@ -24,7 +30,7 @@ describe('JWT', () => {
 		it('should return true for a valid JWT', () => {
 			expect(getJWT(empty).isValid()).to.equal(true);
 			expect(getJWT(expired).isValid()).to.equal(true);
-			expect(getJWT(two2FA).isValid()).to.equal(true);
+			expect(getJWT(pending2FA).isValid()).to.equal(true);
 		});
 
 		it('should return false for an invalid JWT', () => {
@@ -52,21 +58,21 @@ describe('JWT', () => {
 		});
 
 		it('should return false when `exp` is in the future', () => {
-			expect(getJWT(two2FA).isExpired()).to.equal(false);
+			expect(getJWT(pending2FA).isExpired()).to.equal(false);
 		});
 	});
 
-	describe('.needs2FA()', () => {
-		it('should return false when there is no `twoFactorRequired`', () => {
-			expect(getJWT(empty).needs2FA()).to.equal(false);
+	describe('.get2FAStatus()', () => {
+		it('should return `not_required` when there is no `twoFactorRequired`', () => {
+			expect(getJWT(empty).get2FAStatus()).to.equal('not_required');
 		});
 
-		it('should return false when `twoFactorRequired` is `false`', () => {
-			expect(getJWT(expired).needs2FA()).to.equal(false);
+		it('should return `passed` when `twoFactorRequired` is `false`', () => {
+			expect(getJWT(passed2FA).get2FAStatus()).to.equal('passed');
 		});
 
-		it('should return true when `twoFactorRequired` is `true`', () => {
-			expect(getJWT(two2FA).needs2FA()).to.equal(true);
+		it('should return `pending` when `twoFactorRequired` is `true`', () => {
+			expect(getJWT(pending2FA).get2FAStatus()).to.equal('pending');
 		});
 	});
 });

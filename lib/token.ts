@@ -24,7 +24,7 @@ export interface Token {
 	getAge: () => number | undefined;
 	isExpired: () => boolean;
 	isValid: () => boolean;
-	needs2FA: () => boolean;
+	get2FAStatus: () => 'not_required' | 'pending' | 'passed';
 }
 
 export enum TokenType {
