@@ -1,4 +1,16 @@
 - commits:
+    - subject: Fix async tests not waiting for the result
+      hash: 027af56893911b7b6a95c6743eb90cae86cc3f86
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Thodoris Greasidis
+      nested: []
+  version: 4.1.3
+  title: ""
+  date: 2023-05-25T08:28:54.576Z
+- commits:
     - subject: Delete redundant .resinci.yml
       hash: eca476bec2b6ddd9c41809f3bca4c2c2f776fe69
       body: ""
