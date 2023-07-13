@@ -1,4 +1,14 @@
 - commits:
+    - subject: "patch: Update flowzone.yml"
+      hash: d326127df55010e4f4f208cdadbad2ffbb9b32f9
+      body: ""
+      footer: {}
+      author: Kyle Harding
+      nested: []
+  version: 4.2.1
+  title: ""
+  date: 2023-07-13T18:52:23.188Z
+- commits:
     - subject: Add a get2FAStatus() method
       hash: 266c8bc9b12d13fd96ce0ae6b12d7767a27030d8
       body: ""
