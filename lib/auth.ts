@@ -19,8 +19,7 @@ limitations under the License.
  */
 
 import * as errors from 'balena-errors';
-import * as getStorage from 'balena-settings-storage';
-import { BalenaSettingsStorage } from 'balena-settings-storage/lib/types';
+import { getStorage, BalenaSettingsStorage } from 'balena-settings-storage';
 
 import { APIKey } from './api-key';
 import { JWT } from './jwt';
