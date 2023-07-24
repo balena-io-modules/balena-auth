@@ -1,6 +1,6 @@
 {
   "name": "balena-auth",
-  "version": "4.2.1",
+  "version": "5.0.0",
   "description": "Balena session authentication utilities",
   "main": "build/auth.js",
   "types": "build/auth.d.ts",
@@ -83,6 +83,6 @@
     }
   },
   "versionist": {
-    "publishedAt": "2023-07-13T18:52:23.299Z"
+    "publishedAt": "2023-07-24T14:38:57.741Z"
   }
 }

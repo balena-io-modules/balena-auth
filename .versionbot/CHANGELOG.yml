@@ -1,4 +1,107 @@
 - commits:
+    - subject: Update balena-settings-storage to 8.0.0
+      hash: 1a5128a7e9d871793b664d715e4857cb7743b911
+      body: |
+        Update balena-settings-storage from 7.0.0 to 8.0.0
+      footer:
+        Change-type: major
+        change-type: major
+      author: Thodoris Greasidis
+      nested:
+        - commits:
+            - subject: "virtual-storage: Use an object without a prototype as the store"
+              hash: 00400db327771795a8b14fe89c0bf0c6deb7259a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Thodoris Greasidis
+            - subject: Specify a browser entry point
+              hash: c6ea47565cb355adad15a310b9993a0022951b39
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Thodoris Greasidis
+            - subject: Use es6 exports
+              hash: 080f73f04bf290813f780e85ca017420cf7463db
+              body: ""
+              footer:
+                Change-type: major
+                change-type: major
+              author: Thodoris Greasidis
+            - subject: Update TypeScript to 5.1.6
+              hash: a782ec12bcf3bf821e9c808b5cdd9ec9d6edd823
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Thodoris Greasidis
+            - subject: Drop support for nodejs < 14
+              hash: bc1cf351bc4d6b3a950148d6157e196a7c56051c
+              body: ""
+              footer:
+                Change-type: major
+                change-type: major
+              author: Thodoris Greasidis
+          version: balena-settings-storage-8.0.0
+          title: ""
+          date: 2023-07-24T14:22:05.302Z
+        - commits:
+            - subject: Update balena-errors from v4.7.1 to v4.7.3
+              hash: 877c1d027f02854670ffaa7758ff70d408492250
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Andrea Rosci <andrear@balena.io>
+                signed-off-by: Andrea Rosci <andrear@balena.io>
+              author: JSReds
+          version: balena-settings-storage-7.0.2
+          title: ""
+          date: 2022-11-08T13:14:38.496Z
+        - commits:
+            - subject: Fix tests on node18
+              hash: 33262bd764f9e88cd566bf49939bb017ac7dd47b
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Thodoris Greasidis <thodoris@balena.io>
+                signed-off-by: Thodoris Greasidis <thodoris@balena.io>
+              author: Thodoris Greasidis
+            - subject: Replace balenaCI with flowzone
+              hash: 6679d186948bc592c3c846d926addd6903900978
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Andrea Rosci <andrear@balena.io>
+                signed-off-by: Andrea Rosci <andrear@balena.io>
+              author: JSReds
+          version: balena-settings-storage-7.0.1
+          title: ""
+          date: 2022-11-01T18:06:51.897Z
+    - subject: Update dependencies
+      hash: 591e90c5373d0186cbc7d1731d122ec8a8c0a4b1
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Thodoris Greasidis
+      nested: []
+    - subject: Drop support for nodejs < 14
+      hash: 9bedd71dd410fac2bc0b776a6292c1381e5450ad
+      body: ""
+      footer:
+        Change-type: major
+        change-type: major
+      author: Thodoris Greasidis
+      nested: []
+  version: 5.0.0
+  title: ""
+  date: 2023-07-24T14:38:57.149Z
+- commits:
     - subject: "patch: Update flowzone.yml"
       hash: d326127df55010e4f4f208cdadbad2ffbb9b32f9
       body: ""
