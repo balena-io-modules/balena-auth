@@ -47,7 +47,7 @@
     "@balena/lint": "^5.1.0",
     "@types/chai": "^4.3.3",
     "@types/chai-as-promised": "^7.1.5",
-    "@types/jsonwebtoken": "^7.2.3",
+    "@types/jsonwebtoken": "^8.0.0",
     "@types/mocha": "^9.1.1",
     "@types/node": "^14.18.54",
     "balena-config-karma": "^4.0.0",
@@ -59,7 +59,7 @@
     "crypto-browserify": "^3.12.0",
     "husky": "^4.2.5",
     "jsdoc-to-markdown": "^3.0.0",
-    "jsonwebtoken": "^7.3.0",
+    "jsonwebtoken": "^8.0.0",
     "karma": "^5.2.3",
     "mocha": "^10.0.0",
     "os-browserify": "^0.3.0",
@@ -67,7 +67,7 @@
     "rimraf": "^2.6.1",
     "stream-browserify": "^3.0.0",
     "ts-node": "^10.9.1",
-    "typescript": "^4.8.3",
+    "typescript": "^5.1.6",
     "util": "^0.12.4"
   },
   "dependencies": {
