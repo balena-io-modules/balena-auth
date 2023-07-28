@@ -37,8 +37,8 @@ It accepts the following params:
 | Param | Type | Description |
 | --- | --- | --- |
 | options | <code>Object</code> | options |
-| options.dataDirectory | <code>string</code> | the directory to use for storage in Node.js. Ignored in the browser. |
-| options.tokenKey | <code>string</code> | the key used to store the last token in the storage. `token` by default. |
+| [options.dataDirectory] | <code>string</code> \| <code>false</code> | the directory to use for storage in Node.js or false to create an isolated in memory instance. Values other than false are ignored in the browser. |
+| [options.tokenKey] | <code>string</code> | the key used to store the last token in the storage. `token` by default. |
 
 **Example**
 ```js

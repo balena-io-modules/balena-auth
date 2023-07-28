@@ -30,11 +30,10 @@
     "test:node": "mocha -r ts-node/register --reporter spec tests/**/*.spec.ts",
     "test:browser": "karma start",
     "prebuild": "rimraf ./build && npm run lint-fix",
-    "build": "tsc",
+    "build": "tsc && npm run readme",
     "pretest": "npm run build && npm run lint",
     "test": "npm run test:node && npm run test:browser",
     "prepack": "npm run build",
-    "prereadme": "npm run build",
     "readme": "jsdoc2md --template doc/README.hbs build/*.js > README.md"
   },
   "author": "Balena Team <hello@balena.io>",
@@ -73,7 +72,7 @@
   "dependencies": {
     "@types/jwt-decode": "^2.2.1",
     "balena-errors": "^4.7.1",
-    "balena-settings-storage": "^8.0.0",
+    "balena-settings-storage": "^8.1.0",
     "jwt-decode": "^2.2.0",
     "tslib": "^2.0.0"
   },

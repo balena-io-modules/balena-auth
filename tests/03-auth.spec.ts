@@ -262,5 +262,134 @@ describe('BalenaAuth', () => {
 				});
 			});
 		});
+
+		describe('using dataDirectory: false and the same tokenKey', function () {
+			let authIsolated1: InstanceType<typeof BalenaAuth>;
+			let authIsolated2: InstanceType<typeof BalenaAuth>;
+			before(async function () {
+				await auth.setKey(apiKeyFixtures.apiKey);
+
+				authIsolated1 = new BalenaAuth({
+					dataDirectory: false,
+					tokenKey: 'token-test',
+				});
+				authIsolated2 = new BalenaAuth({
+					dataDirectory: false,
+					tokenKey: 'token-test',
+				});
+			});
+			describe('.hasKey()', () => {
+				it('should return true on the original instance', async () => {
+					expect(await auth.hasKey()).to.equal(true);
+				});
+				it('should return false on the isolated instance', async () => {
+					expect(await authIsolated1.hasKey()).to.equal(false);
+				});
+			});
+			describe('.getKey()', () => {
+				it('should return the key on the original instance', async () => {
+					expect(await auth.getKey()).to.equal(apiKeyFixtures.apiKey);
+				});
+				it('should reject on the isolated instance', async () => {
+					await expect(authIsolated1.getKey()).to.eventually.rejected;
+				});
+			});
+			describe('.setKey()', () => {
+				it('should work', async function () {
+					await authIsolated1.setKey(apiKeyFixtures.apiKey2);
+					expect(await authIsolated1.getKey()).to.equal(apiKeyFixtures.apiKey2);
+					expect(await authIsolated1.hasKey()).to.equal(true);
+				});
+			});
+			describe('given a key set by the first isolated instance', function () {
+				before(async function () {
+					await authIsolated1.setKey(apiKeyFixtures.apiKey2);
+				});
+				describe('.hasKey()', () => {
+					it('should return true on the original instance', async () => {
+						expect(await auth.hasKey()).to.equal(true);
+					});
+					it('should return true when called on the first isolated instance', async () => {
+						expect(await authIsolated1.hasKey()).to.equal(true);
+					});
+					it('should return false when called on the second isolated instance', async () => {
+						expect(await authIsolated2.hasKey()).to.equal(false);
+					});
+				});
+				describe('.getKey()', () => {
+					it('should return the key on the original instance', async () => {
+						expect(await auth.getKey()).to.equal(apiKeyFixtures.apiKey);
+					});
+					it('should return the provided key when called on the first isolated instance', async () => {
+						expect(await authIsolated1.getKey()).to.equal(
+							apiKeyFixtures.apiKey2,
+						);
+					});
+					it('should reject when called on the second isolated instance', async () => {
+						await expect(authIsolated2.getKey()).to.eventually.rejected;
+					});
+				});
+			});
+			describe('given a key set by the second isolated instance', function () {
+				before(async function () {
+					await authIsolated2.setKey(apiKeyFixtures.apiKey3);
+				});
+				describe('.hasKey()', () => {
+					it('should return true on the original instance', async () => {
+						expect(await auth.hasKey()).to.equal(true);
+					});
+					it('should return true when called on the first isolated instance', async () => {
+						expect(await authIsolated1.hasKey()).to.equal(true);
+					});
+					it('should return true when called on the second isolated instance', async () => {
+						expect(await authIsolated2.hasKey()).to.equal(true);
+					});
+				});
+				describe('.getKey()', () => {
+					it('should return the key on the original instance', async () => {
+						expect(await auth.getKey()).to.equal(apiKeyFixtures.apiKey);
+					});
+					it('should return the provided key when called on the first isolated instance ', async () => {
+						expect(await authIsolated1.getKey()).to.equal(
+							apiKeyFixtures.apiKey2,
+						);
+					});
+					it('should return the provided key when called on the second isolated instance ', async () => {
+						expect(await authIsolated2.getKey()).to.equal(
+							apiKeyFixtures.apiKey3,
+						);
+					});
+				});
+			});
+			describe('when the first isolated instance removes its key', function () {
+				before(async function () {
+					await authIsolated1.removeKey();
+				});
+				describe('.hasKey()', () => {
+					it('should return true on the original instance', async () => {
+						expect(await auth.hasKey()).to.equal(true);
+					});
+					it('should return false when called on the first isolated instance', async () => {
+						expect(await authIsolated1.hasKey()).to.equal(false);
+					});
+					it('should return true when called on the second isolated instance', async () => {
+						expect(await authIsolated2.hasKey()).to.equal(true);
+					});
+				});
+				describe('.getKey()', () => {
+					it('should return the key on the original instance', async () => {
+						expect(await auth.getKey()).to.equal(apiKeyFixtures.apiKey);
+					});
+					it('should reject when called on the first isolated instance', async () => {
+						await expect(authIsolated1.getKey()).to.eventually.rejected;
+					});
+					it('should return the provided key when called on the second isolated instance ', async () => {
+						expect(await authIsolated2.getKey()).to.equal(
+							apiKeyFixtures.apiKey3,
+						);
+					});
+				});
+			});
+		});
 	});
 });
