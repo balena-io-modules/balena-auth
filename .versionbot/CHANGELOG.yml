@@ -1,4 +1,16 @@
 - commits:
+    - subject: Add multiple instance isolation tests
+      hash: 0404c937564fe24e0b6ba1cca49db776bcfeaa75
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Thodoris Greasidis
+      nested: []
+  version: 5.0.1
+  title: ""
+  date: 2023-07-28T14:03:55.964Z
+- commits:
     - subject: Update balena-settings-storage to 8.0.0
       hash: 1a5128a7e9d871793b664d715e4857cb7743b911
       body: |
