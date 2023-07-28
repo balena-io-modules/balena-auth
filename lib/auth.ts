@@ -25,8 +25,10 @@ import { APIKey } from './api-key';
 import { JWT } from './jwt';
 import { Token, TokenType } from './token';
 
+export { TokenType } from './token';
+
 interface BalenaAuthOptions {
-	dataDirectory?: string;
+	dataDirectory?: string | false;
 	tokenKey?: string;
 }
 
