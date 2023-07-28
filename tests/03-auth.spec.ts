@@ -9,7 +9,7 @@ chai.use(chaiAsPromised);
 
 const IS_BROWSER = typeof window !== 'undefined';
 
-let dataDirectory;
+let dataDirectory: string | undefined;
 if (!IS_BROWSER) {
 	// tslint:disable-next-line no-var-requires
 	const settings = require('balena-settings-client');
@@ -19,12 +19,15 @@ if (!IS_BROWSER) {
 const auth = new BalenaAuth({ dataDirectory, tokenKey: 'token-test' });
 
 describe('BalenaAuth', () => {
-	beforeEach(() =>
+	before(async () => {
 		// Ensure a clean state before starting
-		auth.removeKey(),
-	);
+		await auth.removeKey();
+	});
 
 	describe('.hasKey()/.removeKey()', () => {
+		beforeEach(async () => {
+			await auth.removeKey();
+		});
 		it('should return false when no key was stored', async () => {
 			await expect(auth.hasKey()).to.eventually.equal(false);
 		});
@@ -44,8 +47,13 @@ describe('BalenaAuth', () => {
 	// These only check one basic variation of each, the other specs go into more detail
 
 	describe('.setKey()', () => {
+		beforeEach(async () => {
+			await auth.removeKey();
+		});
 		describe('JWT', () => {
-			beforeEach(() => auth.setKey(jwtFixtures.empty));
+			beforeEach(async () => {
+				await auth.setKey(jwtFixtures.empty);
+			});
 
 			describe('.getType()', () => {
 				it('should always return TokenType.JWT', async () => {
@@ -129,7 +137,9 @@ describe('BalenaAuth', () => {
 		});
 
 		describe('APIKey', () => {
-			beforeEach(() => auth.setKey(apiKeyFixtures.apiKey));
+			beforeEach(async () => {
+				await auth.setKey(apiKeyFixtures.apiKey);
+			});
 
 			describe('.getType()', () => {
 				it('should always return TokenType.APIKey', async () => {
@@ -172,6 +182,83 @@ describe('BalenaAuth', () => {
 			describe('.needs2FA()', () => {
 				it('should always return false', async () => {
 					await expect(auth.needs2FA()).to.eventually.equal(false);
+				});
+			});
+		});
+	});
+
+	describe('mutliple instances', function () {
+		before(async () => {
+			await auth.setKey(apiKeyFixtures.apiKey);
+		});
+
+		describe('using the same dataDirectory and tokenKey', function () {
+			let authOther: InstanceType<typeof BalenaAuth>;
+			before(function () {
+				authOther = new BalenaAuth({ dataDirectory, tokenKey: 'token-test' });
+			});
+			describe('.hasKey()', () => {
+				it('should return true', async () => {
+					expect(await authOther.hasKey()).to.equal(true);
+				});
+			});
+			describe('.getKey()', () => {
+				it('should return the same key provided originally', async () => {
+					expect(await authOther.getKey()).to.equal(apiKeyFixtures.apiKey);
+				});
+			});
+		});
+
+		describe('using a different dataDirectory and the same tokenKey', function () {
+			let authOther: InstanceType<typeof BalenaAuth>;
+			before(function () {
+				authOther = new BalenaAuth({
+					dataDirectory: `${dataDirectory}-other`,
+					tokenKey: 'token-test',
+				});
+			});
+			describe('.hasKey()', () => {
+				// TODO: we should provide the same isolation level for browsers as well
+				if (IS_BROWSER) {
+					it('should return true', async () => {
+						expect(await authOther.hasKey()).to.equal(true);
+					});
+				} else {
+					it('should return false', async () => {
+						expect(await authOther.hasKey()).to.equal(false);
+					});
+				}
+			});
+			describe('.getKey()', () => {
+				// TODO: we should provide the same isolation level for browsers as well
+				if (IS_BROWSER) {
+					it('should return the same key provided originally', async () => {
+						expect(await authOther.getKey()).to.equal(apiKeyFixtures.apiKey);
+					});
+				} else {
+					it('should reject', async () => {
+						await expect(authOther.getKey()).to.eventually.be.rejected;
+					});
+				}
+			});
+		});
+
+		describe('using the same dataDirectory and differter tokenKey', function () {
+			let authOther: InstanceType<typeof BalenaAuth>;
+			before(function () {
+				authOther = new BalenaAuth({
+					dataDirectory,
+					tokenKey: 'token-test-other',
+				});
+			});
+			describe('.hasKey()', () => {
+				it('should return false', async () => {
+					expect(await authOther.hasKey()).to.equal(false);
+				});
+			});
+			describe('.getKey()', () => {
+				it('should reject', async () => {
+					await expect(authOther.getKey()).to.eventually.rejected;
 				});
 			});
 		});
