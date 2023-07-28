@@ -1,4 +1,18 @@
 - commits:
+    - subject: "Add support for isolated instances by passing dataDirectory: false"
+      hash: 2cc4958bb2916775fecbc258f43b23c46333b661
+      body: ""
+      footer:
+        Depends-on: https://github.com/balena-io-modules/balena-settings-storage/pull/37
+        depends-on: https://github.com/balena-io-modules/balena-settings-storage/pull/37
+        Change-type: minor
+        change-type: minor
+      author: Thodoris Greasidis
+      nested: []
+  version: 5.1.0
+  title: ""
+  date: 2023-07-28T15:00:01.134Z
+- commits:
     - subject: Add multiple instance isolation tests
       hash: 0404c937564fe24e0b6ba1cca49db776bcfeaa75
       body: ""
