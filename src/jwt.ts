@@ -18,7 +18,7 @@ limitations under the License.
  * @module jwt
  */
 
-import * as jwtDecode from 'jwt-decode';
+import jwtDecode from 'jwt-decode';
 import type { Token } from './token';
 import { TokenType } from './token';
 

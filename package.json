@@ -69,10 +69,9 @@
     "util": "^0.12.4"
   },
   "dependencies": {
-    "@types/jwt-decode": "^2.2.1",
     "balena-errors": "^4.7.1",
     "balena-settings-storage": "^8.1.0",
-    "jwt-decode": "^2.2.0",
+    "jwt-decode": "^3.1.2",
     "tslib": "^2.0.0"
   },
   "husky": {
