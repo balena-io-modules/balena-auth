@@ -1,4 +1,20 @@
 - commits:
+    - subject: Update jwt-decode to v3
+      hash: 8179bdfc955741da8e3064d18ce415c6c4220f00
+      body: |
+        This also removes the @types/jwt-decode
+        which were incorrectly marked as prod deps
+        and which could pollute the typings of
+        consumer projects.
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Thodoris Greasidis
+      nested: []
+  version: 6.0.1
+  title: ""
+  date: 2024-02-23T10:40:43.355Z
+- commits:
     - subject: Update typescript to 5.3.3
       hash: cfeecc8af7afda08e673cc6bde658cfa20879c82
       body: ""
