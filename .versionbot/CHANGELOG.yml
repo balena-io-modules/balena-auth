@@ -1,4 +1,56 @@
 - commits:
+    - subject: Update typescript to 5.3.3
+      hash: cfeecc8af7afda08e673cc6bde658cfa20879c82
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Thodoris Greasidis
+      nested: []
+    - subject: Move the sources from lib to src
+      hash: 7609bea85a91817eacd6e5783dd2fb0c47954f08
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Thodoris Greasidis
+      nested: []
+    - subject: Update @balena/lint to v7
+      hash: 315ee2b36e6567181c2bd05d1cbcf64b6840d743
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Thodoris Greasidis
+      nested: []
+    - subject: Stop publishing the lib folder
+      hash: bc65b3930232f50b49ae071d1adc108774c681eb
+      body: ""
+      footer:
+        Change-type: major
+        change-type: major
+      author: Thodoris Greasidis
+      nested: []
+    - subject: Drop support for nodejs < 18
+      hash: 70698a30f3b915ef8fc4ffb5b1ba7ec8ee9ccabb
+      body: ""
+      footer:
+        Change-type: major
+        change-type: major
+      author: Thodoris Greasidis
+      nested: []
+    - subject: Drop no longer used appveyor.yml
+      hash: a47c2e7ce94c0b99d75697562e109fd87dbd641a
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Thodoris Greasidis
+      nested: []
+  version: 6.0.0
+  title: ""
+  date: 2024-02-23T10:32:49.610Z
+- commits:
     - subject: "Add support for isolated instances by passing dataDirectory: false"
       hash: 2cc4958bb2916775fecbc258f43b23c46333b661
       body: ""
