@@ -10,8 +10,7 @@
     "url": "git://github.com/balena-io-modules/balena-auth.git"
   },
   "files": [
-    "build/",
-    "lib/"
+    "build/"
   ],
   "keywords": [
     "balena",
