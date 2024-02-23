@@ -25,12 +25,12 @@
   },
   "scripts": {
     "ci": "npm test && catch-uncommitted",
-    "lint": "balena-lint --typescript lib tests",
-    "lint-fix": "balena-lint --typescript --fix lib tests",
+    "lint": "balena-lint lib tests",
+    "lint-fix": "balena-lint --fix lib tests",
     "test:node": "mocha -r ts-node/register --reporter spec tests/**/*.spec.ts",
     "test:browser": "karma start",
     "prebuild": "rimraf ./build && npm run lint-fix",
-    "build": "tsc && npm run readme",
+    "build": "tsc --project tsconfig.dist.json && npm run readme",
     "pretest": "npm run build && npm run lint",
     "test": "npm run test:node && npm run test:browser",
     "prepack": "npm run build",
@@ -43,7 +43,7 @@
     "npm": ">=6.0.0"
   },
   "devDependencies": {
-    "@balena/lint": "^5.1.0",
+    "@balena/lint": "^7.3.0",
     "@types/chai": "^4.3.3",
     "@types/chai-as-promised": "^7.1.5",
     "@types/jsonwebtoken": "^8.0.0",
