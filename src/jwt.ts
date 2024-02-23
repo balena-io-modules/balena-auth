@@ -19,7 +19,8 @@ limitations under the License.
  */
 
 import * as jwtDecode from 'jwt-decode';
-import { Token, TokenType } from './token';
+import type { Token } from './token';
+import { TokenType } from './token';
 
 export interface JWTData {
 	iat?: number;
