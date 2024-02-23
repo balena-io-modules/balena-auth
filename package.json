@@ -24,8 +24,8 @@
   },
   "scripts": {
     "ci": "npm test && catch-uncommitted",
-    "lint": "balena-lint lib tests",
-    "lint-fix": "balena-lint --fix lib tests",
+    "lint": "balena-lint src tests",
+    "lint-fix": "balena-lint --fix src tests",
     "test:node": "mocha -r ts-node/register --reporter spec tests/**/*.spec.ts",
     "test:browser": "karma start",
     "prebuild": "rimraf ./build && npm run lint-fix",
