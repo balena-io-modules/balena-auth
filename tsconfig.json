@@ -1,19 +1,11 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "target": "es2015",
-    "outDir": "build",
-    "importHelpers": true,
-    "noImplicitAny": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "preserveConstEnums": true,
-    "pretty": true,
-    "sourceMap": true,
-    "strict": true,
-    "declaration": true
-  },
-  "include": [
-    "lib/**/*.ts"
-  ]
+    "extends": "./tsconfig.dist.json",
+    "compilerOptions": {
+        "resolveJsonModule": true
+    },
+    "include": [
+        "lib/**/*.ts",
+        "tests/**/*.ts",
+        "*.js"
+    ]
 }

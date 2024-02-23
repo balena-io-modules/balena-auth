@@ -18,7 +18,8 @@ limitations under the License.
  * @module api-key
  */
 
-import { Token, TokenType } from './token';
+import type { Token } from './token';
+import { TokenType } from './token';
 
 export class APIKey implements Token {
 	/**

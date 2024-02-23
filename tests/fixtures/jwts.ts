@@ -1,5 +1,5 @@
 import * as jsonwebtoken from 'jsonwebtoken';
-import { JWTData } from '../../build/jwt';
+import type { JWTData } from '../../build/jwt';
 
 const signToken = (data: JWTData) =>
 	jsonwebtoken.sign(data, '_SECRET_', { noTimestamp: !data.iat });

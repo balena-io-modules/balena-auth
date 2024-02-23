@@ -192,11 +192,7 @@ Contribute
 - Issue Tracker: [github.com/balena-io-modules/balena-auth/issues](https://github.com/balena-io-modules/balena-auth/issues)
 - Source Code: [github.com/balena-io-modules/balena-auth](https://github.com/balena-io-modules/balena-auth)
 
-Before submitting a PR, please make sure that you include tests, and that [tslint](https://palantir.github.io/tslint/) runs without any warning:
-
-```sh
-$ npm run lint
-```
+Before submitting a PR, please make sure that you include tests, and that `npm run lint` runs without any warning.
 
 License
 -------
