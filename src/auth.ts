@@ -18,7 +18,9 @@ limitations under the License.
  * @module auth
  */
 
-import * as errors from 'balena-errors';
+// TODO-MAJOR: Remove balena-errors import altogether and create the relevant errors in this module instead.
+import { BalenaMalformedToken, BalenaExpiredToken } from 'balena-errors';
+export { BalenaMalformedToken, BalenaExpiredToken };
 import type { BalenaSettingsStorage } from 'balena-settings-storage';
 import { getStorage } from 'balena-settings-storage';
 
@@ -216,10 +218,10 @@ export default class BalenaAuth {
 	private createToken = (key: string): Token => {
 		const token: Token = JWT.isValid(key) ? new JWT(key) : new APIKey(key);
 		if (!token.isValid()) {
-			throw new errors.BalenaMalformedToken(key);
+			throw new BalenaMalformedToken(key);
 		}
 		if (token.isExpired()) {
-			throw new errors.BalenaExpiredToken(key);
+			throw new BalenaExpiredToken(key);
 		}
 		return token;
 	};
@@ -231,7 +233,7 @@ export default class BalenaAuth {
 
 		const key = await this.storage.get(this.tokenKey);
 		if (typeof key !== 'string') {
-			throw new errors.BalenaMalformedToken(key as any);
+			throw new BalenaMalformedToken(key as any);
 		}
 		this.token = this.createToken(key as string);
 		return this.token;
