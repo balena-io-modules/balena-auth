@@ -1,4 +1,24 @@
 - commits:
+    - subject: "Add id-token: write permission for NPM OIDC publishing"
+      hash: 5a41fa48281c4f623902d5ddcbb9b7db06af80e6
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Pagan Gazzard
+      nested: []
+    - subject: Export error types for users to be able to use `instanceof` with
+      hash: 5b54ef6cb012087f8e84a23f9dbc70a34aae5c1a
+      body: ""
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Pagan Gazzard
+      nested: []
+  version: 6.1.0
+  title: ""
+  date: 2026-03-24T23:02:28.390Z
+- commits:
     - subject: Update jwt-decode to v3
       hash: 8179bdfc955741da8e3064d18ce415c6c4220f00
       body: |
