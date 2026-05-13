@@ -70,7 +70,7 @@
   },
   "dependencies": {
     "balena-errors": "^5.0.0",
-    "balena-settings-storage": "^8.1.0",
+    "balena-settings-storage": "^9.0.0",
     "jwt-decode": "^3.1.2",
     "tslib": "^2.0.0"
   },
